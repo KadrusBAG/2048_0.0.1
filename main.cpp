@@ -29,9 +29,12 @@ int main()
                             }
                         }
                         while(m[i+1][j]==0){
-                            m[i+1][j]=m[i][j];
-                            m[i][j]=0;
-                            i+=1;
+                            if(i<3){
+                                m[i+1][j]=m[i][j];
+                                m[i][j]=0;
+                                i=i+1;
+                            }
+                            else{break;}
                         }
                         i=k;
                     }
@@ -52,9 +55,12 @@ int main()
                             }
                         }
                         while(m[i-1][j]==0){
-                            m[i-1][j]=m[i][j];
-                            m[i][j]=0;
-                            i-=1;
+                            if(i>0){
+                                m[i-1][j]=m[i][j];
+                                m[i][j]=0;
+                                i=i-1;
+                            }
+                            else{break;}
                         }
                         i=k;
                     }
