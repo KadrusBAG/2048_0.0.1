@@ -17,6 +17,29 @@ int main()
         }
         if(op=='j'){
             for(j=0; j<4; ++j){
+                for(i=3; i>=0; --i){
+                    if(m[i][j]!=0){
+                        for(k=i-1; k>=0; --k){
+                            if(m[k][j]!=0){
+                                if(m[k][j]==m[i][j]){
+                                    m[i][j]=m[i][j]+m[k][j];
+                                    m[k][j]=0;
+                                }
+                                break;
+                            }
+                        }
+                        while(m[i+1][j]==0){
+                            m[i+1][j]=m[i][j];
+                            m[i][j]=0;
+                            i+=1;
+                        }
+                        i=k;
+                    }
+                }
+            }
+        }
+        if(op=='k'){
+            for(j=0; j<4; ++j){
                 for(i=0; i<4; ++i){
                     if(m[i][j]!=0){
                         for(k=i+1; k<4; ++k){
@@ -24,13 +47,14 @@ int main()
                                 if(m[k][j]==m[i][j]){
                                     m[i][j]=m[i][j]+m[k][j];
                                     m[k][j]=0;
-                                    break;
                                 }
+                                break;
                             }
                         }
                         while(m[i-1][j]==0){
                             m[i-1][j]=m[i][j];
                             m[i][j]=0;
+                            i-=1;
                         }
                         i=k;
                     }
