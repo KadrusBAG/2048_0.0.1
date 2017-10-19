@@ -67,6 +67,32 @@ int main()
                 }
             }
         }
+        if(op=='h'){
+            for(i=0; i<4; ++i){
+                for(j=0; j<4; ++j){
+                    if(m[i][j]!=0){
+                        for(k=j+1; k<4; ++k){
+                            if(m[i][k]!=0){
+                                if(m[i][k]==m[i][j]){
+                                    m[i][j]=m[i][j]+m[i][k];
+                                    m[i][k]=0;
+                                }
+                                break;
+                            }
+                        }
+                        while(m[i][j-1]==0){
+                            if(j>0){
+                                m[i][j-1]=m[i][j];
+                                m[i][j]=0;
+                                j=j-1;
+                            }
+                            else{break;}
+                        }
+                        j=k;
+                    }
+                }
+            }
+        }
         for(i=0; i<4; ++i){
             for(j=0; j<4; ++j){
                 cout<<m[i][j]<<" ";
